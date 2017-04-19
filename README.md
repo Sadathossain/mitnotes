@@ -1,6 +1,6 @@
 # MITnotes
 
-This is a simple web note list app made for my project on Institute of Information Technology, Dhaka University. It's written in Golang + Javascript.
+This is a simple web note list app made for my project on Institute of Information Technology, Dhaka University.
 
 ## Building the image
 

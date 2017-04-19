@@ -42,7 +42,7 @@ func deleteNoteHandler(c *gin.Context) {
 		return
 	}
 
-	readNodeHandler(c)
+	readNoteHandler(c)
 }
 
 func healthCheckHandler(c *gin.Context) {
