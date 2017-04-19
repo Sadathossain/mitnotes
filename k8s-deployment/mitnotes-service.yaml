@@ -1,0 +1,18 @@
+kind: "Service"
+apiVersion: "v1"
+metadata:
+  name: "mitnotes"
+  namespace: mitnotes
+  labels:
+    name: "mitnotes"
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "3000"
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: "TCP"
+  selector:
+    name: "mitnotes"
+  type: "NodePort"

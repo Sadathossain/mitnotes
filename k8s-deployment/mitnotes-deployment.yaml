@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mitnotes
+  namespace: mitnotes
+  labels:
+    name: mitnotes
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: mitnotes
+      namespace: mitnotes
+      labels:
+        name: mitnotes
+    spec:
+      volumes:
+      - name: mitnotes-config
+        configMap:
+          name: mitnotes-config
+      containers:
+        - name: "mitnotes"
+          image: "sadathossain/todo-app-web:latest"
+          command: ["./mitnotes"]
+          args: ["-config-file", "/etc/mitnotes/redis.config"]
+          resources:
+            limits:
+              cpu: 100m
+              memory: 500Mi
+            requests:
+              cpu: 100m
+              memory: 500Mi
+          volumeMounts:
+          - name: mitnotes-config
+            mountPath: /etc/mitnotes
+          ports:
+            - containerPort: 3000
+              protocol: "TCP"
+          livenessProbe:
+            httpGet:
+              path: "/health"
+              port: 3000
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 10
+            timeoutSeconds: 5

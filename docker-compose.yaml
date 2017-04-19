@@ -1,0 +1,25 @@
+version: "2"
+services:
+  noteApp:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: sadathossain/mitnotes
+    command: ["./mitnotes", "-config-file", "/etc/mitnotes/redis.config"]
+    ports:
+     - 3000:3000
+    depends_on:
+     - redis-master
+     - redis-slave
+    volumes:
+     - ./configs/redis.config:/etc/mitnotes/redis.config:ro
+  redis-slave:
+    image: johscheuer/redis-slave:v2
+    depends_on:
+     - redis-master
+  redis-master:
+    image: johscheuer/redis-master:v2
+
+networks:
+  default:
+    driver: bridge
