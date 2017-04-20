@@ -4,33 +4,18 @@ This is a simple web note list app made for my project on Institute of Informati
 
 ## Building the image
 
-### dev
-
 ```bash
-$ git clone https://github.com/Sadathossain/mitnotes.git
-$ cd mitnotes
-$ vagrant up --provision
-$ vagrant ssh
-$ cd /vagrant/mitnotes
+$ go get -u github.com/Sadathossain/mitnotes
+$ cd $GOPATH/src/github.com/Sadathossain/mitnotes
+$ CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w -X main.appVersion=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)" -a -installsuffix cgo -o bin/mitnotes .
 $ sudo docker-compose up -d --build
 ```
 
-### Compile the code
+
+## Build the Container
 
 ```bash
-$ go get -u github.com/Sadathossain/mitnotes
-```
-
-#### On OSX
-
-```bash
-$ CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w -X main.appVersion=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)" -a -installsuffix cgo -o bin/mitnotes .
-```
-
-### Build the Container
-
-```bash
-$ docker build -t Sadathossain/mitnotes .
+$ docker build -t sadathossain/mitnotes .
 # Tag the image if you want
 $ docker tag -f sadathossain/mitnotes sadathossain/mitnotes:latest
 $ docker push sadathossain/mitnotes
