@@ -1,54 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta charset="utf-8">
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="MITnotes is made by Sadat Hossain, for his project on IIT, Dhaka University">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <!--Import jQuery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--Import materialize.js-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script src="script.js"></script>
-    <title>Awesome Note App for MIT</title>
-  </head>
-  <body>
-    <h1 id="headline" class="text-center">Note list</h1>
-    <img src="mocklogo.jpeg" alt="Logo of MIT Notes" class="img-circle center-block img-responsive" height="140" width="140">
-    <div class="container-fluid">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 table-responsive">
-            <table id="Notes" class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th class="col-xs-10 col-sm-10 col-md-10">Note</th>
-                    <th class="col-xs-2 col-sm-2 col-md-2">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-            </table>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
+    <title>MITnotes</title>
+</head>
 
-    <div class="container-fluid">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div class="form-group">
-            <div class="col-md-8">
-              <input type="text" autocomplete="off" class="form-control" id="note-input" placeholder="Notes">
-            </div>
-            <div class="col-md-2">
-              <Button id="note-submit" class="btn btn-primary btn-block">Add</Button>
-            </div>
-            <div class="col-md-2">
-              <Button id="note-delete" class="btn btn-danger btn-block">Delete</Button>
-            </div>
-          </div>
+<body>
+  <div class="card-panel">
+    <h1 class="center-align">MITNotes</h1>
+    <h4 class="center-align">MITnotes is made by Sadat Hossain, for his project on IIT, Dhaka University</h4>
+  </div>
+  <!-- Form Start -->
+  <div class="row">
+    <form class="col s12 m12 l12">
+      <div class="row">
+        <div class="input-field col s12 m12 l12">
+          <textarea id="note-input" class="materialize-textarea"></textarea>
+          <label for="note-input" class="">Notes</label>
         </div>
-      <div class="col-md-2"></div>
-    </div>
-    <div class="footer navbar-fixed-bottom">
-      <h5 id="footer-version" class="text-center">Version: </h5>
-    </div>
-  </body>
+        <div class="input-field col s6 m6 l6">
+            <button id="note-submit" class="btn waves-effect waves-light col s12" type="submit" name="action" onclick="Materialize.toast('Note Saved', 4000)">Save
+              <i class="material-icons left">input</i>
+            </button>
+        </div>
+        <div class="input-field col s6 m6 l6">
+            <button id="note-delete" class="btn waves-effect waves-light col s12 red" onclick="Materialize.toast('Note Deleted', 4000)">delete
+              <i class="material-icons right">delete</i>
+            </button>
+        </div>
+      </div>
+    </form>
+  <!-- Form ends -->
+  <!-- Note list starts -->
+  <div id="Notes">
+    <ul>
+    </ul>
+  </div>
+  </div>
+<!-- Note list ends -->
+<!-- Footer -->
+<div class="footer-copyright">
+  <div class="container col s12 m12 l12">
+    <p class="center-align">© 2017 Copyright Sadat Hossain</p>
+    <h5 id="footer-version" class="center-align">Version: </h5>
+  </div>
+</div>
+</body>
 </html>

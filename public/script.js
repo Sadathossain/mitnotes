@@ -5,9 +5,9 @@ $(document).ready(function() {
     if (data == null) {
       return
     }
-    $("#Notes > tbody").empty();
+    $("#Notes ul").empty();
     $.each(data, function(key, val) {
-      $("#Notes > tbody").append('<tr><td class="col-xs-10 col-sm-10 col-md-10">'+val+'</td><td align="center" class="col-xs-2 col-sm-2 col-md-2"><input type="checkbox" name="deleteCheck" value="1"/></td></tr>');
+      $("#Notes ul").append('<li><div class="col s12 m6 l4"><div class="card-panel purple accent-4"><span class="white-text">'+val+'<p><div class="switch"><label><input type="checkbox" name="deleteCheck" value="1"><span class="lever"></span></label></div></p></span></div></div></li>');
     });
   }
 
@@ -18,7 +18,6 @@ $(document).ready(function() {
         entryContentElement.parent().addClass("has-error").removeClass("has-success");
         return false;
     }
-
 
     entryContentElement.val("")
     entryContentElement.parent().removeClass("has-error").addClass("has-success");
@@ -34,18 +33,18 @@ $(document).ready(function() {
        continue
      }
      var checkbox = checkboxes[i];
-     $.getJSON("delete/note/" + $(checkbox).closest('tr').text(), appendNoteList);
+     $.getJSON("delete/note/" + $(checkbox).closest('li').text(), appendNoteList);
     }
   }
 
   $("#note-submit").click(handleSubmission);
   $("#note-delete").click(handleDeletion);
 
-  // Poll every second.
+  // Poll every five second.
   (function fetchNotes() {
     $.getJSON("read/note").done(appendNoteList).always(
       function() {
-        setTimeout(fetchNotes, 10000);
+        setTimeout(fetchNotes, 50000);
       });
   })();
 });
