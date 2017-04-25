@@ -7,7 +7,7 @@ $(document).ready(function() {
     }
     $("#Notes ul").empty();
     $.each(data, function(key, val) {
-      $("#Notes ul").append('<li><div class="col s12 m6 l4"><div class="card-panel purple accent-4"><span class="white-text">'+val+'<p><div class="switch"><label><input type="checkbox" name="deleteCheck" value="1"><span class="lever"></span></label></div></p></span></div></div></li>');
+      $("#Notes ul").append('<li><div class="col s12 m6 l4"><div class="card-panel purple accent-4 z-depth-5"><span class="white-text">'+val+'<p><div class="switch"><label><input type="checkbox" name="deleteCheck" value="1"><span class="lever"></span></label></div></p></span></div></div></li>');
     });
   }
 
