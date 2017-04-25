@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: "redis-master"
-          image: "johscheuer/redis-master:v2"
+          image: "sadathossain/redis-master:1.0.0"
           resources:
             limits:
               cpu: 100m

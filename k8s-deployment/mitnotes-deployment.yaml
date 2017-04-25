@@ -20,7 +20,7 @@ spec:
           name: mitnotes-config
       containers:
         - name: "mitnotes"
-          image: "sadathossain/todo-app-web:latest"
+          image: "sadathossain/mitnotes:latest"
           command: ["./mitnotes"]
           args: ["-config-file", "/etc/mitnotes/redis.config"]
           resources:
