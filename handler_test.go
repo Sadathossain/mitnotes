@@ -107,7 +107,7 @@ func TestWhoAmI(t *testing.T) {
 		t.FailNow()
 	}
 
-	//NOTE we would ned to set a fix IP address to this container
+	
 	defer readResp.Body.Close()
 }
 
